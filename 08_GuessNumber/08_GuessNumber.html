@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/02_GuessNumber.CSS">
+    <title>猜數字</title>
+    <style>
+        .btnwrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+}
+.btnwrap button{
+    margin: 0;
+    padding: 0;
+    width: 300px;
+    height: 50px;
+    font-size: 20px;
+} 
+.history-wrap{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+textarea{
+    width: 900px;
+    border: #aaa 3px solid;
+    font-size: 25px;
+}
+.history{
+    width: 900px;
+    height: 50px;
+    border: 3px solid #aaa;
+    margin: 1px;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+.operating-wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.text{
+    background-color: #aaa;
+    width: 150px;
+    height: 50px;
+    font-size: 20px;
+    line-height: 50px;
+    text-align: center;
+}
+input{
+    width: 650px;
+    height: 45px;
+    font-size: 25px;
+}
+.operating-wrap button{
+    width: 100px;
+    height: 50px;
+    font-size: 20px;
+}
+    </style>
+</head>
+
+<body>
+    <!-- 起始區按鈕 -->
+    <div class="btnwrap">
+        <button id="start">開始</button>
+        <button id="reset">放棄重來</button>
+        <button id="cheat">看答案</button>
+    </div>
+    <!-- 遊戲歷程 -->
+    <div class="history-wrap">
+        <textarea name="" id="history" cols="60" rows="5"></textarea>
+    </div>
+    <!-- 操作區 -->
+    <div class="operating-wrap">
+        <div class="text">猜答案</div>
+        <input id="inputanswer" type="text">
+        <button id="check">猜!</button>
+    </div>
+
+
+    <script>
+        //初始設定
+        let result;
+        let inputanswer = document.getElementById('inputanswer');
+        inputanswer.value = '';
+        let answer = [];
+        let sumA;
+        let sumB;
+        //遊戲歷程初始化
+        let history = document.getElementById('history');
+        //產生答案
+        function getAnswer() {
+            while (answer.length != 4) {
+                let num = Math.floor(10 * Math.random());
+                if (!answer.includes(num)) {
+                    answer.push(num);
+                }
+            }
+            return answer;
+        }
+
+        //開始鍵
+        let btnStart = document.getElementById('start');
+        btnStart.onclick = function startGame() {
+            let answer = getAnswer();
+            result = answer.join('');
+            //重新開始鍵
+            let btnReset = document.getElementById('reset');
+            btnReset.onclick = function () {
+                btnReset.onclick = null;
+                btnCheck.onclick = null;
+                btnCheat.onclick = null;
+
+            }
+            //看答案鍵
+            let btnCheat = document.getElementById('cheat');
+            btnCheat.onclick = function () {
+                alert(result);
+            }
+
+            //送出答案鍵
+            let btnCheck = document.getElementById('check');
+            btnCheck.onclick = function () {
+                // 檢查答案
+                sumB = inputanswer.value.split('').map(Number).filter(x => answer.includes(x)).length;
+                sumA = 0;
+                for (let i = 0; i <= 3; i++) {
+                    if (answer[i] == inputanswer.value[i]) {
+                        sumA++;
+                        sumB--;
+                    }
+                }
+                alert(`${sumA}A${sumB}B`);
+                // 印出答案
+                history.value += `${sumA}A${sumB}B：${inputanswer.value}\n`;
+            }
+        }
+
+
+
+
+
+    </script>
+</body>
+
+</html>
