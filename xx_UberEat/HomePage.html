@@ -16,33 +16,185 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
     integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
 
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
   <title>線上訂購餐點 | 美食外送 App | Uber Eats 優食</title>
 
   <style>
+    /* 套LEO */
+    .p1 {
+      margin: 0 16px;
+      white-space: pre-wrap;
+    }
+
+    .Tag {
+      line-height: 16px;
+      display: inline-block;
+      background-color: #05a357;
+      border-radius: 0 24px 24px 0;
+      color: #ffff;
+      font-size: 14px;
+      padding: 4px 12px;
+      position: absolute;
+      left: 0;
+      top: 10px;
+    }
+
+    .headline {
+      position: relative;
+    }
+
+    .col {
+      display: flex;
+      position: relative;
+    }
+
+    .touchZone {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+    .foodCard {
+      width: 100%;
+    }
+
+    .favorite {
+      display: flex;
+      height: 28px;
+      width: 50px;
+      justify-content: flex-start;
+      align-items: center;
+      position: absolute;
+      right: 0;
+      top: 10px;
+    }
+
+    .switch {
+      position: relative;
+      display: flex;
+      width: 20px;
+      height: 20px;
+      justify-content: center;
+      align-items: center;
+
+    }
+
+    .hSolid4hover {
+      z-index: 2;
+      position: absolute;
+      color: rgb(177, 177, 177);
+      display: none;
+    }
+
+    .hEmpty {
+      position: absolute;
+      color: rgb(253, 253, 253);
+    }
+
+    .switch:hover .hEmpty {
+      display: none;
+    }
+
+    .switch:hover .hSolid4hover {
+      z-index: 2;
+      display: block;
+    }
+
+    .hSolid {
+      z-index: 2;
+      position: absolute;
+      color: rgb(253, 253, 253);
+      display: none;
+    }
+
+
+    .shopNameandPoint {
+      display: flex;
+      font-weight: 500;
+      width: 100%;
+      margin-top: 12px;
+      align-items: center;
+      flex-flow: wrap row;
+      justify-content: space-between;
+      color: black;
+    }
+
+    .point {
+      display: flex;
+      height: 28px;
+      width: 28px;
+      border-radius: 50%;
+      background: #EEEEEE;
+      font-size: 12px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .shopName {
+      font-size: 20px;
+    }
+
+    .col {
+      margin-bottom: 30px;
+    }
+
+    .TWD {
+      display: flex;
+      color: black;
+    }
+
+    .dotSpace {
+      margin: 0 10px 0 10px;
+    }
+
     /* 套JESSY */
     header {
-      height: 96px;
-      background-color: #ccc;
+      max-width: 1920px;
+      height: 100px;
+      background-color: #444;
+      color: #fff;
       font-size: 50px;
+      text-align: center;
+
     }
 
     footer {
-      height: 521px;
-      background-color: #ccc;
+      max-width: 1920px;
+      height: 500px;
+      background-color: #444;
+      color: #fff;
       font-size: 50px;
+      text-align: center;
+      line-height: 50%;
     }
 
+    /* 內容 */
     main {
+      max-width: 1920px;
       padding: 0px 40px;
     }
 
-    /* 主分類欄 */
-    main li {
+    /* 主分類 */
+    .maincategory {
+      max-width: 100%;
+      height: 133px;
+      border: 1000px;
+      border-color: red;
+    }
+
+    .maincategory li {
       list-style: none;
     }
 
-    main li a img {
-      min-width: 60px;
+    .maincategory img {
+      width: 75px;
+      height: 75px;
+      min-width: 75px;
+    }
+
+    .maincategory span {
+      color: #000;
     }
 
     h2 {
@@ -50,26 +202,29 @@
       font-weight: 700;
     }
 
-    /* #eventcarousel-wrap {
-      min-width: 1400px;
+    /* 活動店家(幻燈片) */
+    .eventstore {
+      padding: 20px;
     }
 
-    #eventcarousel img {
-      
-    } */
+    .eventstore img {
+      border-radius: 15px;
+      height: 100%;
+    }
 
+    .eventstore .uk-panel {
+      height: 100%;
+    }
+
+    /* 副分類 */
     #subcategory {
-      min-width: 360px;
-      height: 1000px;
+      min-width: 400px;
+      height: 700px;
     }
 
-    #cellphone-subcategory #subcategory {
-      min-width: 360px;
-      height: 750px;
+    #cellphone-subcategory {
+      min-width: 400px;
     }
-
-    /* 副分類按鈕 */
-
 
     /* 副分類選單(關) */
     .uk-accordion-title::before {
@@ -101,13 +256,14 @@
 
     .form-check-label {
       height: 22px;
-      font-size: 14px;
+      font-size: 16px;
       margin: 0 0 0 16px;
       text-align: center;
     }
 
-    .uk-slider {
+    .uk-slidenav {
       padding: 0;
+
     }
 
     .uk-accordion-content button {
@@ -119,36 +275,48 @@
       color: #fff;
     }
 
-    .uk-position-small {
-      margin: 0px;
+    #restrict-container button {
+      margin: 5px;
     }
 
-    .uk-accordion-content {
-      font-size: 14px;
-      font-weight: 500;
+
+
+    /* 商店類別 */
+    .storecategory {
+      padding: 20px;
+
     }
 
-    /* #store-wrap ul {
-      width: 800px;
+    .storecategory img {
+      width: 100%;
     }
 
-    #store-wrap li {
-      min-width: 100px;
-    } */
+    .storecategory .uk-panel {
+      height: 100%;
+    }
 
-    @media screen and (max-width:1024px) {
+    #invitefriend {
+      font-size: 28px;
+      height: 200px;
+    }
+
+
+
+
+
+    @media screen and (max-width:992px) {
       #subcategory {
         display: none;
       }
 
     }
-    @media screen and (min-width:1024px) {
+
+    @media screen and (min-width:992px) {
       #cellphone-subcategory {
         display: none;
       }
 
     }
-   
   </style>
 </head>
 
@@ -156,14 +324,24 @@
   <!-- header合併JESSY -->
   <header>header</header>
 
-  <!-- 主畫面 -->
+
+
+
+  <!-- 內容 -->
   <main>
+
     <!-- 副分類按鈕 -->
     <!-- Button trigger modal -->
     <div id="cellphone-subcategory">
       <div class="d-flex justify-content-end">
-        <button type="button" class="btn btn-dark  " data-toggle="modal" data-target="#exampleModal">
-          篩選條件
+        <button type="button" class="btn " data-toggle="modal" data-target="#exampleModal">
+          <svg width="24px" height="24px" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true" focusable="false">
+            <circle cx="8" cy="8" r="3" stroke="#000000" stroke-width="2"></circle>
+            <path d="M11 8H20" stroke="#000000" stroke-width="2"></path>
+            <circle cx="16" cy="16" r="3" transform="rotate(180 16 16)" stroke="#000000" stroke-width="2"></circle>
+            <path d="M13 16L4 16" stroke="#000000" stroke-width="2"></path>
+          </svg>
         </button>
       </div>
       <!-- Modal -->
@@ -171,13 +349,15 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">所有餐廳門市</h5>
+              <h5 class="modal-title" id="exampleModalLabel">篩選條件</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              <div id="subcategory" class="p-3 mb-2  text-dark align-items-start border sticky-top ">
+
+
+              <div id=" cellphone-subcategory" class="p-3 mb-2  text-dark align-items-start  sticky-top ">
                 <!-- 副分類標籤 -->
                 <div>
                   <h1 style="font-size: 28px; font-weight: 700;">所有餐廳門市</h1>
@@ -273,255 +453,272 @@
                   <li class="uk-open">
                     <a class="uk-accordion-title" href="#">飲食限制</a>
                     <div id="restrict-container" class="uk-accordion-content">
+                      <div class="top-wrap d-flex">
+                        <button type="button" class="btn rounded-pill d-flex">
+                          <div class="font-weight-bold">
+                            <i class="fas fa-leaf"></i>
+                            蔬食料理
+                          </div>
+                        </button>
 
-                      <button type="button" class="btn rounded-pill d-flex">
-                        <div class="font-weight-bold">
-                          <i class="fas fa-leaf"></i>
-                          蔬食料理
-                        </div>
-                      </button>
+                        <button type="button" class="btn  rounded-pill">
+                          <div class="font-weight-bold">
+                            <i class="fas fa-heart"></i>
+                            純素食料理
+                          </div>
+                        </button>
+                      </div>
+                      <div class="bottom-wrap d-flex">
+                        <button type="button" class="btn  rounded-pill">
+                          <div class="font-weight-bold">
+                            <i class="fab fa-pagelines"></i>
+                            無麩質料理
+                          </div>
+                        </button>
 
-                      <button type="button" class="btn  rounded-pill">
-                        <div class="font-weight-bold">
-                          <i class="fas fa-heart"></i>
-                          純素食料理
-                        </div>
-                      </button>
-
-                      <button type="button" class="btn  rounded-pill">
-                        <div class="font-weight-bold">
-                          <i class="fab fa-pagelines"></i>
-                          無麩質料理
-                        </div>
-                      </button>
-
-                      <button type="button" class="btn rounded-pill">
-                        <div class="font-weight-bold">
-                          <i class="fas fa-ban"></i>
-                          過敏者可食用
-                        </div>
-                      </button>
-
+                        <button type="button" class="btn rounded-pill">
+                          <div class="font-weight-bold">
+                            <i class="fas fa-ban"></i>
+                            過敏者可食用
+                          </div>
+                        </button>
+                      </div>
                     </div>
                   </li>
                 </ul>
 
+
+
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+              <button type="button" class="btn btn-primary">確定</button>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- 主分類欄 -->
 
-    <div class="d-flex justify-content-center overflow-auto">
 
-      <li class="nav-item ">
-        <a class="nav-link" href="#">
-          <img src="https://picsum.photos/60/60/?random=1">
-          <div id="wrap" class="d-flex justify-content-center">
-            <span>優惠</span>
-          </div>
-        </a>
-      </li>
+
+
+    <!-- 主分類 -->
+    <div class="maincategory border-bottom  d-flex justify-content-center overflow-auto align-items-center">
 
       <li class="nav-item ">
         <a class="nav-link" href="#">
-          <img src="https://picsum.photos/60/60/?random=1">
+          <img alt="" role="presentation" src="https://d4p17acsd5wyj.cloudfront.net/shortcuts/deals.png"
+            class="bm bn eg">
           <div id="wrap" class="d-flex justify-content-center">
             <span>優惠</span>
           </div>
         </a>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item ">
         <a class="nav-link" href="#">
-          <img src="https://picsum.photos/60/60/?random=1">
+          <img alt="" role="presentation" src="https://d4p17acsd5wyj.cloudfront.net/shortcuts/top_eats.png"
+            class="bv fi gm">
           <div id="wrap" class="d-flex justify-content-center">
-            <span>優惠</span>
+            <span>嚴選餐廳</span>
+          </div>
+        </a>
+      </li>
+
+      <li class="nav-item ">
+        <a class="nav-link" href="#">
+          <img alt="" role="presentation" src="https://d4p17acsd5wyj.cloudfront.net/shortcuts/cuisines/bubbletea.png"
+            class="bv fi gm">
+          <div id="wrap" class="d-flex justify-content-center">
+            <span>珍珠奶茶</span>
+          </div>
+        </a>
+      </li>
+
+      <li class="nav-item ">
+        <a class="nav-link" href="#">
+          <img alt="" role="presentation" src="https://d4p17acsd5wyj.cloudfront.net/shortcuts/cuisines/dessert.png"
+            class="bv fi gm">
+          <div id="wrap" class="d-flex justify-content-center">
+            <span>甜點</span>
+          </div>
+        </a>
+      </li>
+
+      <li class="nav-item ">
+        <a class="nav-link" href="#">
+          <img alt="" role="presentation" src="https://d4p17acsd5wyj.cloudfront.net/shortcuts/cuisines/pizza.png"
+            class="bv fi gm">
+          <div id="wrap" class="d-flex justify-content-center">
+            <span>披薩</span>
           </div>
         </a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link" href="#">
-          <img src="https://picsum.photos/60/60/?random=1">
+          <img alt="" role="presentation" src="https://d4p17acsd5wyj.cloudfront.net/shortcuts/cuisines/coffeeandtea.png"
+            class="bv fi gm">
           <div id="wrap" class="d-flex justify-content-center">
-            <span>優惠</span>
+            <span>咖啡和茶</span>
           </div>
         </a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link" href="#">
-          <img src="https://picsum.photos/60/60/?random=1">
+          <img alt="" role="presentation" src="https://d4p17acsd5wyj.cloudfront.net/shortcuts/cuisines/healthy.png"
+            class="bv fi gm">
           <div id="wrap" class="d-flex justify-content-center">
-            <span>優惠</span>
-          </div>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <img src="https://picsum.photos/60/60/?random=1">
-          <div id="wrap" class="d-flex justify-content-center">
-            <span>優惠</span>
+            <span>健康飲食</span>
           </div>
         </a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link" href="#">
-          <img src="https://picsum.photos/60/60/?random=1">
+          <img alt="" role="presentation" src="https://d4p17acsd5wyj.cloudfront.net/shortcuts/cuisines/japanese.png"
+            class="bv fi gm">
           <div id="wrap" class="d-flex justify-content-center">
-            <span>優惠</span>
+            <span>日本美食</span>
+          </div>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <img alt="" role="presentation" src="https://d4p17acsd5wyj.cloudfront.net/shortcuts/cuisines/taiwanese.png"
+            class="bv fi gm">
+          <div id="wrap" class="d-flex justify-content-center">
+            <span>台灣美食</span>
           </div>
         </a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link" href="#">
-          <img src="https://picsum.photos/60/60/?random=1">
+          <img alt="" role="presentation" src="https://d4p17acsd5wyj.cloudfront.net/shortcuts/cuisines/korean.png"
+            class="bv fi gm">
           <div id="wrap" class="d-flex justify-content-center">
-            <span>優惠</span>
+            <span>韓國美食</span>
           </div>
         </a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link" href="#">
-          <img src="https://picsum.photos/60/60/?random=1">
+          <img alt="" role="presentation" src="https://d4p17acsd5wyj.cloudfront.net/shortcuts/cuisines/chinese.png"
+            class="bv fi gm">
           <div id="wrap" class="d-flex justify-content-center">
-            <span>優惠</span>
-          </div>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <img src="https://picsum.photos/60/60/?random=1">
-          <div id="wrap" class="d-flex justify-content-center">
-            <span>優惠</span>
+            <span>中式美食</span>
           </div>
         </a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link" href="#">
-          <img src="https://picsum.photos/60/60/?random=1">
+          <img alt="" role="presentation" src="https://d4p17acsd5wyj.cloudfront.net/shortcuts/cuisines/fastfood.png"
+            class="bv fi gm">
           <div id="wrap" class="d-flex justify-content-center">
-            <span>優惠</span>
+            <span>速食</span>
           </div>
         </a>
       </li>
-
-
       <li class="nav-item">
         <a class="nav-link" href="#">
-          <img src="https://picsum.photos/60/60/?random=1">
+          <img alt="" role="presentation" src="https://d4p17acsd5wyj.cloudfront.net/shortcuts/cuisines/american.png"
+            class="bv fi gm">
           <div id="wrap" class="d-flex justify-content-center">
-            <span>優惠</span>
+            <span>美式料理</span>
           </div>
         </a>
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <img src="https://picsum.photos/60/60/?random=1">
-          <div id="wrap" class="d-flex justify-content-center">
-            <span>優惠</span>
-          </div>
-        </a>
-      </li>
 
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <img src="https://picsum.photos/60/60/?random=1">
-          <div id="wrap" class="d-flex justify-content-center">
-            <span>優惠</span>
-          </div>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <img src="https://picsum.photos/60/60/?random=1">
-          <div id="wrap" class="d-flex justify-content-center">
-            <span>優惠</span>
-          </div>
-        </a>
-      </li>
 
     </div>
-
     <!-- 活動店家(幻燈片) -->
-    <div uk-slider Id="eventcarousel" class="">
+    <div class="eventstore">
 
-      <div class="uk-position-relative">
+      <div class="uk-position-relative uk-visible-toggle uk-light " tabindex="-1" uk-slider="center: true">
 
-        <div id="eventcarousel-wrap" class="uk-slider-container uk-light">
-          <ul class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m">
-            <li class="d-flex justify-content-center">
-              <img src="https://picsum.photos/330/192/?random=1" alt="">
-            </li>
+        <ul class="uk-slider-items uk-grid uk-child-width-3-6">
+          <li class="uk-width-1-3@l uk-width-1-1">
+            <div class="uk-panel">
+              <img src="https://d1g1f25tn8m2e6.cloudfront.net/95553966-6d59-47a8-a879-1ce72b2012be.jpg" alt="">
 
-            <li class="d-flex justify-content-center">
-              <img src="https://picsum.photos/330/192/?random=1" alt="">
-            </li>
-            <li class="d-flex justify-content-center">
-              <img src="https://picsum.photos/330/192/?random=1" alt="">
-            </li>
+            </div>
+          </li>
+          <li class="uk-width-1-3@l uk-width-1-1">
+            <div class="uk-panel">
+              <img src="https://d1g1f25tn8m2e6.cloudfront.net/662ddfc3-f48f-4e56-97f3-50b486c4e12d.jpg" alt="">
 
-            <li class="d-flex justify-content-center">
-              <img src="https://picsum.photos/330/192/?random=1" alt="">
-            </li>
+            </div>
+          </li>
+          <li class="uk-width-1-3@l uk-width-1-1">
+            <div class="uk-panel">
+              <img src="https://d1g1f25tn8m2e6.cloudfront.net/a4533c41-e7f3-4d91-9804-79e7ad1e37c1.png" alt="">
 
-            <li class="d-flex justify-content-center">
-              <img src="https://picsum.photos/330/192/?random=1" alt="">
-            </li>
+            </div>
+          </li>
+          <li class="uk-width-1-3@l uk-width-1-1">
+            <div class="uk-panel">
+              <img src="https://d1g1f25tn8m2e6.cloudfront.net/c613a72e-41bf-46e3-8ef0-210307ee6bf5.jpg" alt="">
 
-            <li class="d-flex justify-content-center">
-              <img src="https://picsum.photos/330/192/?random=1" alt="">
-            </li>
+            </div>
+          </li>
+          <li class="uk-width-1-3@l uk-width-1-1">
+            <div class="uk-panel">
+              <img src="https://d1g1f25tn8m2e6.cloudfront.net/3613e91b-a603-42fb-958b-19bc830754ef.jpg" alt="">
 
-            <li class="d-flex justify-content-center">
-              <img src="https://picsum.photos/330/192/?random=1" alt="">
-            </li>
+            </div>
+          </li>
+          <li class="uk-width-1-3@l uk-width-1-1">
+            <div class="uk-panel">
+              <img src="https://d1g1f25tn8m2e6.cloudfront.net/b30f0c8f-3f02-49a6-a94e-8f2361b376ab.jpg" alt="">
 
-            <li class="d-flex justify-content-center">
-              <img src="https://picsum.photos/330/192/?random=1" alt="">
-            </li>
+            </div>
+          </li>
+          <li class="uk-width-1-3@l uk-width-1-1">
+            <div class="uk-panel">
+              <img src="https://d1g1f25tn8m2e6.cloudfront.net/f5b6b161-e4b6-414d-88a6-14c2a3c084aa.jpg" alt="">
 
-            <li class="d-flex justify-content-center">
-              <img src="https://picsum.photos/330/192/?random=1 " alt="">
-            </li>
-          </ul>
-        </div>
+            </div>
+          </li>
 
-        <div class="uk-hidden@s uk-light">
-          <a class="uk-position-center-left uk-position-small" href="#" uk-slidenav-previous
-            uk-slider-item="previous"></a>
-          <a class="uk-position-center-right uk-position-small" href="#" uk-slidenav-next uk-slider-item="next"></a>
-        </div>
+          <li class="uk-width-1-3@l uk-width-1-1">
+            <div class="uk-panel">
+              <img src="https://d1g1f25tn8m2e6.cloudfront.net/49920032-3cff-4075-836e-491e07d34a78.jpg" alt="">
 
-        <div class="uk-visible@s">
-          <a class="uk-position-center-left-out uk-position-small" href="#" uk-slidenav-previous
-            uk-slider-item="previous"></a>
-          <a class="uk-position-center-right-out uk-position-small" href="#" uk-slidenav-next uk-slider-item="next"></a>
-        </div>
+            </div>
+          </li>
+
+          <li class="uk-width-1-3@l uk-width-1-1">
+            <div class="uk-panel">
+              <img src="https://d1g1f25tn8m2e6.cloudfront.net/bcbf17c9-4690-4def-9150-87f64bfb4e40.jpg" alt="">
+
+            </div>
+          </li>
+        </ul>
+
+
+
+
+        <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous
+          uk-slider-item="previous"></a>
+        <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next
+          uk-slider-item="next"></a>
 
       </div>
 
-      <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin d-none"></ul>
+
 
     </div>
     <!-- 主要頁面 -->
     <div id="mainpage" class="d-flex ">
 
       <!-- 副分類 -->
-      <div id="subcategory" class="p-3 mb-2 bg-warning text-dark align-items-start border sticky-top ">
+      <div id="subcategory" class="p-3 mb-2  text-dark align-items-start  sticky-top ">
         <!-- 副分類標籤 -->
         <div>
           <h1 style="font-size: 28px; font-weight: 700;">所有餐廳門市</h1>
@@ -614,35 +811,36 @@
           <li class="uk-open">
             <a class="uk-accordion-title" href="#">飲食限制</a>
             <div id="restrict-container" class="uk-accordion-content">
+              <div class="top-wrap d-flex">
+                <button type="button" class="btn rounded-pill d-flex">
+                  <div class="font-weight-bold">
+                    <i class="fas fa-leaf"></i>
+                    蔬食料理
+                  </div>
+                </button>
 
-              <button type="button" class="btn rounded-pill d-flex">
-                <div class="font-weight-bold">
-                  <i class="fas fa-leaf"></i>
-                  蔬食料理
-                </div>
-              </button>
+                <button type="button" class="btn  rounded-pill">
+                  <div class="font-weight-bold">
+                    <i class="fas fa-heart"></i>
+                    純素食料理
+                  </div>
+                </button>
+              </div>
+              <div class="bottom-wrap d-flex">
+                <button type="button" class="btn  rounded-pill">
+                  <div class="font-weight-bold">
+                    <i class="fab fa-pagelines"></i>
+                    無麩質料理
+                  </div>
+                </button>
 
-              <button type="button" class="btn  rounded-pill">
-                <div class="font-weight-bold">
-                  <i class="fas fa-heart"></i>
-                  純素食料理
-                </div>
-              </button>
-
-              <button type="button" class="btn  rounded-pill">
-                <div class="font-weight-bold">
-                  <i class="fab fa-pagelines"></i>
-                  無麩質料理
-                </div>
-              </button>
-
-              <button type="button" class="btn rounded-pill">
-                <div class="font-weight-bold">
-                  <i class="fas fa-ban"></i>
-                  過敏者可食用
-                </div>
-              </button>
-
+                <button type="button" class="btn rounded-pill">
+                  <div class="font-weight-bold">
+                    <i class="fas fa-ban"></i>
+                    過敏者可食用
+                  </div>
+                </button>
+              </div>
             </div>
           </li>
         </ul>
@@ -651,614 +849,645 @@
       <!-- 商品類別 -->
       <div id="shopcategory">
         <!-- 店家欄(分類) -->
-        <div id="storecategory" class=" ">
+        <div class="storecategory">
           <div class="d-flex align-items-center justify-content-between">
             <h2>您的最愛商家</h2><a href="">查看全部</a>
           </div>
-          <div uk-slider>
+          <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="center: true">
 
-            <div class="uk-position-relative">
+            <ul class="uk-slider-items uk-grid">
+              <li class="uk-width-1-3@l uk-width-1-1">
+                <div class="uk-panel">
+                  <!-- 商店卡(LEO) -->
+                  <div class="col">
+                    <div class="foodCard" style="cursor:pointer;">
+                      <a href="#" style="text-decoration:none;">
+                        <div class="headline">
+                          <img src="https://picsum.photos/300/100/?random=1">
+                          <div class="Tag">買1送1</div>
+                        </div>
+                        <div class="foodText">
+                          <div class="shopNameandPoint">
+                            <div id="spName" class="shopName">Burger King漢堡王 松山店</div>
+                            <div id="pp" class="point">4.7</div>
+                          </div>
+                          <div class="TWD">
+                            <span id="ntd" class="">55TWD 費用</span>
+                            <div class="dotSpace"><span class="dot"> • </span></div>
+                            <span id="min" class="">25–35 分鐘</span>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="touchZone" style="cursor:pointer;">
+                      <div class="favorite">
+                        <div class="switch" id="sw" onclick="clickChangeC()">
+                          <!-- 空心 -->
+                          <i class="far fa-heart hEmpty" style="display: block;"></i>
+                          <!-- 實心 -->
+                          <i class="fas fa-heart hSolid" style="display: none;"></i>
+                          <i class="fas fa-heart hSolid4hover"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="uk-width-1-3@l uk-width-1-1">
+                <div class="uk-panel">
+                  <!-- 商店卡(LEO) -->
+                  <div class="col">
+                    <div class="foodCard" style="cursor:pointer;">
+                      <a href="#" style="text-decoration:none;">
+                        <div class="headline">
+                          <img src="https://picsum.photos/300/100/?random=1">
+                          <div class="Tag">買1送1</div>
+                        </div>
+                        <div class="foodText">
+                          <div class="shopNameandPoint">
+                            <div id="spName" class="shopName">Burger King漢堡王 松山店</div>
+                            <div id="pp" class="point">4.7</div>
+                          </div>
+                          <div class="TWD">
+                            <span id="ntd" class="">55TWD 費用</span>
+                            <div class="dotSpace"><span class="dot"> • </span></div>
+                            <span id="min" class="">25–35 分鐘</span>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="touchZone" style="cursor:pointer;">
+                      <div class="favorite">
+                        <div class="switch" id="sw" onclick="clickChangeC()">
+                          <!-- 空心 -->
+                          <i class="far fa-heart hEmpty" style="display: block;"></i>
+                          <!-- 實心 -->
+                          <i class="fas fa-heart hSolid" style="display: none;"></i>
+                          <i class="fas fa-heart hSolid4hover"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="uk-width-1-3@l uk-width-1-1">
+                <div class="uk-panel">
+                  <!-- 商店卡(LEO) -->
+                  <div class="col">
+                    <div class="foodCard" style="cursor:pointer;">
+                      <a href="#" style="text-decoration:none;">
+                        <div class="headline">
+                          <img src="https://picsum.photos/300/100/?random=1">
+                          <div class="Tag">買1送1</div>
+                        </div>
+                        <div class="foodText">
+                          <div class="shopNameandPoint">
+                            <div id="spName" class="shopName">Burger King漢堡王 松山店</div>
+                            <div id="pp" class="point">4.7</div>
+                          </div>
+                          <div class="TWD">
+                            <span id="ntd" class="">55TWD 費用</span>
+                            <div class="dotSpace"><span class="dot"> • </span></div>
+                            <span id="min" class="">25–35 分鐘</span>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="touchZone" style="cursor:pointer;">
+                      <div class="favorite">
+                        <div class="switch" id="sw" onclick="clickChangeC()">
+                          <!-- 空心 -->
+                          <i class="far fa-heart hEmpty" style="display: block;"></i>
+                          <!-- 實心 -->
+                          <i class="fas fa-heart hSolid" style="display: none;"></i>
+                          <i class="fas fa-heart hSolid4hover"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="uk-width-1-3@l uk-width-1-1">
+                <div class="uk-panel">
+                  <!-- 商店卡(LEO) -->
+                  <div class="col">
+                    <div class="foodCard" style="cursor:pointer;">
+                      <a href="#" style="text-decoration:none;">
+                        <div class="headline">
+                          <img src="https://picsum.photos/300/100/?random=1">
+                          <div class="Tag">買1送1</div>
+                        </div>
+                        <div class="foodText">
+                          <div class="shopNameandPoint">
+                            <div id="spName" class="shopName">Burger King漢堡王 松山店</div>
+                            <div id="pp" class="point">4.7</div>
+                          </div>
+                          <div class="TWD">
+                            <span id="ntd" class="">55TWD 費用</span>
+                            <div class="dotSpace"><span class="dot"> • </span></div>
+                            <span id="min" class="">25–35 分鐘</span>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="touchZone" style="cursor:pointer;">
+                      <div class="favorite">
+                        <div class="switch" id="sw" onclick="clickChangeC()">
+                          <!-- 空心 -->
+                          <i class="far fa-heart hEmpty" style="display: block;"></i>
+                          <!-- 實心 -->
+                          <i class="fas fa-heart hSolid" style="display: none;"></i>
+                          <i class="fas fa-heart hSolid4hover"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="uk-width-1-3@l uk-width-1-1">
+                <div class="uk-panel">
+                  <!-- 商店卡(LEO) -->
+                  <div class="col">
+                    <div class="foodCard" style="cursor:pointer;">
+                      <a href="#" style="text-decoration:none;">
+                        <div class="headline">
+                          <img src="https://picsum.photos/300/100/?random=1">
+                          <div class="Tag">買1送1</div>
+                        </div>
+                        <div class="foodText">
+                          <div class="shopNameandPoint">
+                            <div id="spName" class="shopName">Burger King漢堡王 松山店</div>
+                            <div id="pp" class="point">4.7</div>
+                          </div>
+                          <div class="TWD">
+                            <span id="ntd" class="">55TWD 費用</span>
+                            <div class="dotSpace"><span class="dot"> • </span></div>
+                            <span id="min" class="">25–35 分鐘</span>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="touchZone" style="cursor:pointer;">
+                      <div class="favorite">
+                        <div class="switch" id="sw" onclick="clickChangeC()">
+                          <!-- 空心 -->
+                          <i class="far fa-heart hEmpty" style="display: block;"></i>
+                          <!-- 實心 -->
+                          <i class="fas fa-heart hSolid" style="display: none;"></i>
+                          <i class="fas fa-heart hSolid4hover"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
 
-              <div class="uk-slider-container uk-light">
-                <ul id="store-wrap"
-                  class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m ">
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
 
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
 
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
 
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1 " alt="">
-                  </li>
-                </ul>
-              </div>
-
-              <div class="uk-hidden@s uk-light">
-                <a class="uk-position-center-left uk-position-small" href="#" uk-slidenav-previous
-                  uk-slider-item="previous"></a>
-                <a class="uk-position-center-right uk-position-small" href="#" uk-slidenav-next
-                  uk-slider-item="next"></a>
-              </div>
-
-              <div class="uk-visible@s">
-                <a class="uk-position-center-left-out uk-position-small" href="#" uk-slidenav-previous
-                  uk-slider-item="previous"></a>
-                <a class="uk-position-center-right-out uk-position-small" href="#" uk-slidenav-next
-                  uk-slider-item="next"></a>
-              </div>
-
-            </div>
-
-            <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin d-none"></ul>
+            <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous
+              uk-slider-item="previous"></a>
+            <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next
+              uk-slider-item="next"></a>
 
           </div>
+
         </div>
-        <div id="storecategory" class=" ">
+
+        <div class="storecategory">
           <div class="d-flex align-items-center justify-content-between">
             <h2>您的最愛商家</h2><a href="">查看全部</a>
           </div>
-          <div uk-slider>
+          <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="center: true">
 
-            <div class="uk-position-relative">
+            <ul class="uk-slider-items uk-grid">
+              <li class="uk-width-1-3@l uk-width-1-1">
+                <div class="uk-panel">
+                  <!-- 商店卡(LEO) -->
+                  <div class="col">
+                    <div class="foodCard" style="cursor:pointer;">
+                      <a href="#" style="text-decoration:none;">
+                        <div class="headline">
+                          <img src="https://picsum.photos/300/100/?random=1">
+                          <div class="Tag">買1送1</div>
+                        </div>
+                        <div class="foodText">
+                          <div class="shopNameandPoint">
+                            <div id="spName" class="shopName">Burger King漢堡王 松山店</div>
+                            <div id="pp" class="point">4.7</div>
+                          </div>
+                          <div class="TWD">
+                            <span id="ntd" class="">55TWD 費用</span>
+                            <div class="dotSpace"><span class="dot"> • </span></div>
+                            <span id="min" class="">25–35 分鐘</span>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="touchZone" style="cursor:pointer;">
+                      <div class="favorite">
+                        <div class="switch" id="sw" onclick="clickChangeC()">
+                          <!-- 空心 -->
+                          <i class="far fa-heart hEmpty" style="display: block;"></i>
+                          <!-- 實心 -->
+                          <i class="fas fa-heart hSolid" style="display: none;"></i>
+                          <i class="fas fa-heart hSolid4hover"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="uk-width-1-3@l uk-width-1-1">
+                <div class="uk-panel">
+                  <!-- 商店卡(LEO) -->
+                  <div class="col">
+                    <div class="foodCard" style="cursor:pointer;">
+                      <a href="#" style="text-decoration:none;">
+                        <div class="headline">
+                          <img src="https://picsum.photos/300/100/?random=1">
+                          <div class="Tag">買1送1</div>
+                        </div>
+                        <div class="foodText">
+                          <div class="shopNameandPoint">
+                            <div id="spName" class="shopName">Burger King漢堡王 松山店</div>
+                            <div id="pp" class="point">4.7</div>
+                          </div>
+                          <div class="TWD">
+                            <span id="ntd" class="">55TWD 費用</span>
+                            <div class="dotSpace"><span class="dot"> • </span></div>
+                            <span id="min" class="">25–35 分鐘</span>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="touchZone" style="cursor:pointer;">
+                      <div class="favorite">
+                        <div class="switch" id="sw" onclick="clickChangeC()">
+                          <!-- 空心 -->
+                          <i class="far fa-heart hEmpty" style="display: block;"></i>
+                          <!-- 實心 -->
+                          <i class="fas fa-heart hSolid" style="display: none;"></i>
+                          <i class="fas fa-heart hSolid4hover"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="uk-width-1-3@l uk-width-1-1">
+                <div class="uk-panel">
+                  <!-- 商店卡(LEO) -->
+                  <div class="col">
+                    <div class="foodCard" style="cursor:pointer;">
+                      <a href="#" style="text-decoration:none;">
+                        <div class="headline">
+                          <img src="https://picsum.photos/300/100/?random=1">
+                          <div class="Tag">買1送1</div>
+                        </div>
+                        <div class="foodText">
+                          <div class="shopNameandPoint">
+                            <div id="spName" class="shopName">Burger King漢堡王 松山店</div>
+                            <div id="pp" class="point">4.7</div>
+                          </div>
+                          <div class="TWD">
+                            <span id="ntd" class="">55TWD 費用</span>
+                            <div class="dotSpace"><span class="dot"> • </span></div>
+                            <span id="min" class="">25–35 分鐘</span>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="touchZone" style="cursor:pointer;">
+                      <div class="favorite">
+                        <div class="switch" id="sw" onclick="clickChangeC()">
+                          <!-- 空心 -->
+                          <i class="far fa-heart hEmpty" style="display: block;"></i>
+                          <!-- 實心 -->
+                          <i class="fas fa-heart hSolid" style="display: none;"></i>
+                          <i class="fas fa-heart hSolid4hover"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="uk-width-1-3@l uk-width-1-1">
+                <div class="uk-panel">
+                  <!-- 商店卡(LEO) -->
+                  <div class="col">
+                    <div class="foodCard" style="cursor:pointer;">
+                      <a href="#" style="text-decoration:none;">
+                        <div class="headline">
+                          <img src="https://picsum.photos/300/100/?random=1">
+                          <div class="Tag">買1送1</div>
+                        </div>
+                        <div class="foodText">
+                          <div class="shopNameandPoint">
+                            <div id="spName" class="shopName">Burger King漢堡王 松山店</div>
+                            <div id="pp" class="point">4.7</div>
+                          </div>
+                          <div class="TWD">
+                            <span id="ntd" class="">55TWD 費用</span>
+                            <div class="dotSpace"><span class="dot"> • </span></div>
+                            <span id="min" class="">25–35 分鐘</span>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="touchZone" style="cursor:pointer;">
+                      <div class="favorite">
+                        <div class="switch" id="sw" onclick="clickChangeC()">
+                          <!-- 空心 -->
+                          <i class="far fa-heart hEmpty" style="display: block;"></i>
+                          <!-- 實心 -->
+                          <i class="fas fa-heart hSolid" style="display: none;"></i>
+                          <i class="fas fa-heart hSolid4hover"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="uk-width-1-3@l uk-width-1-1">
+                <div class="uk-panel">
+                  <!-- 商店卡(LEO) -->
+                  <div class="col">
+                    <div class="foodCard" style="cursor:pointer;">
+                      <a href="#" style="text-decoration:none;">
+                        <div class="headline">
+                          <img src="https://picsum.photos/300/100/?random=1">
+                          <div class="Tag">買1送1</div>
+                        </div>
+                        <div class="foodText">
+                          <div class="shopNameandPoint">
+                            <div id="spName" class="shopName">Burger King漢堡王 松山店</div>
+                            <div id="pp" class="point">4.7</div>
+                          </div>
+                          <div class="TWD">
+                            <span id="ntd" class="">55TWD 費用</span>
+                            <div class="dotSpace"><span class="dot"> • </span></div>
+                            <span id="min" class="">25–35 分鐘</span>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="touchZone" style="cursor:pointer;">
+                      <div class="favorite">
+                        <div class="switch" id="sw" onclick="clickChangeC()">
+                          <!-- 空心 -->
+                          <i class="far fa-heart hEmpty" style="display: block;"></i>
+                          <!-- 實心 -->
+                          <i class="fas fa-heart hSolid" style="display: none;"></i>
+                          <i class="fas fa-heart hSolid4hover"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
 
-              <div class="uk-slider-container uk-light">
-                <ul id="store-wrap"
-                  class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m ">
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
 
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
 
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
 
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1 " alt="">
-                  </li>
-                </ul>
-              </div>
-
-              <div class="uk-hidden@s uk-light">
-                <a class="uk-position-center-left uk-position-small" href="#" uk-slidenav-previous
-                  uk-slider-item="previous"></a>
-                <a class="uk-position-center-right uk-position-small" href="#" uk-slidenav-next
-                  uk-slider-item="next"></a>
-              </div>
-
-              <div class="uk-visible@s">
-                <a class="uk-position-center-left-out uk-position-small" href="#" uk-slidenav-previous
-                  uk-slider-item="previous"></a>
-                <a class="uk-position-center-right-out uk-position-small" href="#" uk-slidenav-next
-                  uk-slider-item="next"></a>
-              </div>
-
-            </div>
-
-            <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin d-none"></ul>
+            <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous
+              uk-slider-item="previous"></a>
+            <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next
+              uk-slider-item="next"></a>
 
           </div>
+
         </div>
-        <div id="storecategory" class=" ">
-          <div class="d-flex align-items-center justify-content-between">
-            <h2>您的最愛商家</h2><a href="">查看全部</a>
-          </div>
-          <div uk-slider>
-
-            <div class="uk-position-relative">
-
-              <div class="uk-slider-container uk-light">
-                <ul id="store-wrap"
-                  class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m ">
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1 " alt="">
-                  </li>
-                </ul>
-              </div>
-
-              <div class="uk-hidden@s uk-light">
-                <a class="uk-position-center-left uk-position-small" href="#" uk-slidenav-previous
-                  uk-slider-item="previous"></a>
-                <a class="uk-position-center-right uk-position-small" href="#" uk-slidenav-next
-                  uk-slider-item="next"></a>
-              </div>
-
-              <div class="uk-visible@s">
-                <a class="uk-position-center-left-out uk-position-small" href="#" uk-slidenav-previous
-                  uk-slider-item="previous"></a>
-                <a class="uk-position-center-right-out uk-position-small" href="#" uk-slidenav-next
-                  uk-slider-item="next"></a>
-              </div>
-
-            </div>
-
-            <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin d-none"></ul>
-
-          </div>
-        </div>
-        <div id="storecategory" class=" ">
-          <div class="d-flex align-items-center justify-content-between">
-            <h2>您的最愛商家</h2><a href="">查看全部</a>
-          </div>
-          <div uk-slider>
-
-            <div class="uk-position-relative">
-
-              <div class="uk-slider-container uk-light">
-                <ul id="store-wrap"
-                  class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m ">
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1 " alt="">
-                  </li>
-                </ul>
-              </div>
-
-              <div class="uk-hidden@s uk-light">
-                <a class="uk-position-center-left uk-position-small" href="#" uk-slidenav-previous
-                  uk-slider-item="previous"></a>
-                <a class="uk-position-center-right uk-position-small" href="#" uk-slidenav-next
-                  uk-slider-item="next"></a>
-              </div>
-
-              <div class="uk-visible@s">
-                <a class="uk-position-center-left-out uk-position-small" href="#" uk-slidenav-previous
-                  uk-slider-item="previous"></a>
-                <a class="uk-position-center-right-out uk-position-small" href="#" uk-slidenav-next
-                  uk-slider-item="next"></a>
-              </div>
-
-            </div>
-
-            <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin d-none"></ul>
-
-          </div>
-        </div>
-        <div id="storecategory" class=" ">
-          <div class="d-flex align-items-center justify-content-between">
-            <h2>您的最愛商家</h2><a href="">查看全部</a>
-          </div>
-          <div uk-slider>
-
-            <div class="uk-position-relative">
-
-              <div class="uk-slider-container uk-light">
-                <ul id="store-wrap"
-                  class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m ">
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1 " alt="">
-                  </li>
-                </ul>
-              </div>
-
-              <div class="uk-hidden@s uk-light">
-                <a class="uk-position-center-left uk-position-small" href="#" uk-slidenav-previous
-                  uk-slider-item="previous"></a>
-                <a class="uk-position-center-right uk-position-small" href="#" uk-slidenav-next
-                  uk-slider-item="next"></a>
-              </div>
-
-              <div class="uk-visible@s">
-                <a class="uk-position-center-left-out uk-position-small" href="#" uk-slidenav-previous
-                  uk-slider-item="previous"></a>
-                <a class="uk-position-center-right-out uk-position-small" href="#" uk-slidenav-next
-                  uk-slider-item="next"></a>
-              </div>
-
-            </div>
-
-            <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin d-none"></ul>
-
-          </div>
-        </div>
-        <div id="storecategory" class=" ">
-          <div class="d-flex align-items-center justify-content-between">
-            <h2>您的最愛商家</h2><a href="">查看全部</a>
-          </div>
-          <div uk-slider>
-
-            <div class="uk-position-relative">
-
-              <div class="uk-slider-container uk-light">
-                <ul id="store-wrap"
-                  class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m ">
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1 " alt="">
-                  </li>
-                </ul>
-              </div>
-
-              <div class="uk-hidden@s uk-light">
-                <a class="uk-position-center-left uk-position-small" href="#" uk-slidenav-previous
-                  uk-slider-item="previous"></a>
-                <a class="uk-position-center-right uk-position-small" href="#" uk-slidenav-next
-                  uk-slider-item="next"></a>
-              </div>
-
-              <div class="uk-visible@s">
-                <a class="uk-position-center-left-out uk-position-small" href="#" uk-slidenav-previous
-                  uk-slider-item="previous"></a>
-                <a class="uk-position-center-right-out uk-position-small" href="#" uk-slidenav-next
-                  uk-slider-item="next"></a>
-              </div>
-
-            </div>
-
-            <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin d-none"></ul>
-
-          </div>
-        </div>
-        <div id="storecategory" class=" ">
-          <div class="d-flex align-items-center justify-content-between">
-            <h2>您的最愛商家</h2><a href="">查看全部</a>
-          </div>
-          <div uk-slider>
-
-            <div class="uk-position-relative">
-
-              <div class="uk-slider-container uk-light">
-                <ul id="store-wrap"
-                  class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m ">
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1 " alt="">
-                  </li>
-                </ul>
-              </div>
-
-              <div class="uk-hidden@s uk-light">
-                <a class="uk-position-center-left uk-position-small" href="#" uk-slidenav-previous
-                  uk-slider-item="previous"></a>
-                <a class="uk-position-center-right uk-position-small" href="#" uk-slidenav-next
-                  uk-slider-item="next"></a>
-              </div>
-
-              <div class="uk-visible@s">
-                <a class="uk-position-center-left-out uk-position-small" href="#" uk-slidenav-previous
-                  uk-slider-item="previous"></a>
-                <a class="uk-position-center-right-out uk-position-small" href="#" uk-slidenav-next
-                  uk-slider-item="next"></a>
-              </div>
-
-            </div>
-
-            <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin d-none"></ul>
-
-          </div>
-        </div>
-        <div id="storecategory" class=" ">
-          <div class="d-flex align-items-center justify-content-between">
-            <h2>您的最愛商家</h2><a href="">查看全部</a>
-          </div>
-          <div uk-slider>
-
-            <div class="uk-position-relative">
-
-              <div class="uk-slider-container uk-light">
-                <ul id="store-wrap"
-                  class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m ">
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1 " alt="">
-                  </li>
-                </ul>
-              </div>
-
-              <div class="uk-hidden@s uk-light">
-                <a class="uk-position-center-left uk-position-small" href="#" uk-slidenav-previous
-                  uk-slider-item="previous"></a>
-                <a class="uk-position-center-right uk-position-small" href="#" uk-slidenav-next
-                  uk-slider-item="next"></a>
-              </div>
-
-              <div class="uk-visible@s">
-                <a class="uk-position-center-left-out uk-position-small" href="#" uk-slidenav-previous
-                  uk-slider-item="previous"></a>
-                <a class="uk-position-center-right-out uk-position-small" href="#" uk-slidenav-next
-                  uk-slider-item="next"></a>
-              </div>
-
-            </div>
-
-            <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin d-none"></ul>
-
-          </div>
-        </div>
-        <div id="storecategory" class=" ">
-          <div class="d-flex align-items-center justify-content-between">
-            <h2>您的最愛商家</h2><a href="">查看全部</a>
-          </div>
-          <div uk-slider>
-
-            <div class="uk-position-relative">
-
-              <div class="uk-slider-container uk-light">
-                <ul id="store-wrap"
-                  class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m ">
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1" alt="">
-                  </li>
-
-                  <li>
-                    <img src="https://picsum.photos/250/192/?random=1 " alt="">
-                  </li>
-                </ul>
-              </div>
-
-              <div class="uk-hidden@s uk-light">
-                <a class="uk-position-center-left uk-position-small" href="#" uk-slidenav-previous
-                  uk-slider-item="previous"></a>
-                <a class="uk-position-center-right uk-position-small" href="#" uk-slidenav-next
-                  uk-slider-item="next"></a>
-              </div>
-
-              <div class="uk-visible@s">
-                <a class="uk-position-center-left-out uk-position-small" href="#" uk-slidenav-previous
-                  uk-slider-item="previous"></a>
-                <a class="uk-position-center-right-out uk-position-small" href="#" uk-slidenav-next
-                  uk-slider-item="next"></a>
-              </div>
-
-            </div>
-
-            <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin d-none"></ul>
-
-          </div>
-        </div>
-
         <!-- 邀請好友 -->
-        <div id="invitfriend">
+
+        <div id="invitefriend">
+
+          <div class="d-flex bd-highlight">
+            <div class="bd-highlight"> <img
+                src="https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/c51b2a12396d63d49b5272de6efa283d.svg">
+            </div>
+
+            <div class="flex-fill bd-highlight text-center">
+              <p>只要您的好友嘗試使用 Uber Eats，您就能享有 $100 折扣優惠</p>
+              <div class="d-flex justify-content-center" style="margin: 40px;">
+                <button type="button" class="btn btn-dark rounded-pill"
+                  style="width: 120px;height: 40px;font-size: 18px;">邀請好友 <i class="fas fa-arrow-right "></i></button>
+              </div>
+            </div>
+
+          </div>
+
         </div>
 
+
+        <!-- 店家欄(分類) -->
+        <div class="storecategory">
+          <div class="d-flex align-items-center justify-content-between">
+            <h2>您的最愛商家</h2><a href="">查看全部</a>
+          </div>
+          <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="center: true">
+
+            <ul class="uk-slider-items uk-grid">
+              <li class="uk-width-1-3@l uk-width-1-1">
+                <div class="uk-panel">
+                  <!-- 商店卡(LEO) -->
+                  <div class="col">
+                    <div class="foodCard" style="cursor:pointer;">
+                      <a href="#" style="text-decoration:none;">
+                        <div class="headline">
+                          <img src="https://picsum.photos/300/100/?random=1">
+                          <div class="Tag">買1送1</div>
+                        </div>
+                        <div class="foodText">
+                          <div class="shopNameandPoint">
+                            <div id="spName" class="shopName">Burger King漢堡王 松山店</div>
+                            <div id="pp" class="point">4.7</div>
+                          </div>
+                          <div class="TWD">
+                            <span id="ntd" class="">55TWD 費用</span>
+                            <div class="dotSpace"><span class="dot"> • </span></div>
+                            <span id="min" class="">25–35 分鐘</span>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="touchZone" style="cursor:pointer;">
+                      <div class="favorite">
+                        <div class="switch" id="sw" onclick="clickChangeC()">
+                          <!-- 空心 -->
+                          <i class="far fa-heart hEmpty" style="display: block;"></i>
+                          <!-- 實心 -->
+                          <i class="fas fa-heart hSolid" style="display: none;"></i>
+                          <i class="fas fa-heart hSolid4hover"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="uk-width-1-3@l uk-width-1-1">
+                <div class="uk-panel">
+                  <!-- 商店卡(LEO) -->
+                  <div class="col">
+                    <div class="foodCard" style="cursor:pointer;">
+                      <a href="#" style="text-decoration:none;">
+                        <div class="headline">
+                          <img src="https://picsum.photos/300/100/?random=1">
+                          <div class="Tag">買1送1</div>
+                        </div>
+                        <div class="foodText">
+                          <div class="shopNameandPoint">
+                            <div id="spName" class="shopName">Burger King漢堡王 松山店</div>
+                            <div id="pp" class="point">4.7</div>
+                          </div>
+                          <div class="TWD">
+                            <span id="ntd" class="">55TWD 費用</span>
+                            <div class="dotSpace"><span class="dot"> • </span></div>
+                            <span id="min" class="">25–35 分鐘</span>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="touchZone" style="cursor:pointer;">
+                      <div class="favorite">
+                        <div class="switch" id="sw" onclick="clickChangeC()">
+                          <!-- 空心 -->
+                          <i class="far fa-heart hEmpty" style="display: block;"></i>
+                          <!-- 實心 -->
+                          <i class="fas fa-heart hSolid" style="display: none;"></i>
+                          <i class="fas fa-heart hSolid4hover"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="uk-width-1-3@l uk-width-1-1">
+                <div class="uk-panel">
+                  <!-- 商店卡(LEO) -->
+                  <div class="col">
+                    <div class="foodCard" style="cursor:pointer;">
+                      <a href="#" style="text-decoration:none;">
+                        <div class="headline">
+                          <img src="https://picsum.photos/300/100/?random=1">
+                          <div class="Tag">買1送1</div>
+                        </div>
+                        <div class="foodText">
+                          <div class="shopNameandPoint">
+                            <div id="spName" class="shopName">Burger King漢堡王 松山店</div>
+                            <div id="pp" class="point">4.7</div>
+                          </div>
+                          <div class="TWD">
+                            <span id="ntd" class="">55TWD 費用</span>
+                            <div class="dotSpace"><span class="dot"> • </span></div>
+                            <span id="min" class="">25–35 分鐘</span>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="touchZone" style="cursor:pointer;">
+                      <div class="favorite">
+                        <div class="switch" id="sw" onclick="clickChangeC()">
+                          <!-- 空心 -->
+                          <i class="far fa-heart hEmpty" style="display: block;"></i>
+                          <!-- 實心 -->
+                          <i class="fas fa-heart hSolid" style="display: none;"></i>
+                          <i class="fas fa-heart hSolid4hover"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="uk-width-1-3@l uk-width-1-1">
+                <div class="uk-panel">
+                  <!-- 商店卡(LEO) -->
+                  <div class="col">
+                    <div class="foodCard" style="cursor:pointer;">
+                      <a href="#" style="text-decoration:none;">
+                        <div class="headline">
+                          <img src="https://picsum.photos/300/100/?random=1">
+                          <div class="Tag">買1送1</div>
+                        </div>
+                        <div class="foodText">
+                          <div class="shopNameandPoint">
+                            <div id="spName" class="shopName">Burger King漢堡王 松山店</div>
+                            <div id="pp" class="point">4.7</div>
+                          </div>
+                          <div class="TWD">
+                            <span id="ntd" class="">55TWD 費用</span>
+                            <div class="dotSpace"><span class="dot"> • </span></div>
+                            <span id="min" class="">25–35 分鐘</span>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="touchZone" style="cursor:pointer;">
+                      <div class="favorite">
+                        <div class="switch" id="sw" onclick="clickChangeC()">
+                          <!-- 空心 -->
+                          <i class="far fa-heart hEmpty" style="display: block;"></i>
+                          <!-- 實心 -->
+                          <i class="fas fa-heart hSolid" style="display: none;"></i>
+                          <i class="fas fa-heart hSolid4hover"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="uk-width-1-3@l uk-width-1-1">
+                <div class="uk-panel">
+                  <!-- 商店卡(LEO) -->
+                  <div class="col">
+                    <div class="foodCard" style="cursor:pointer;">
+                      <a href="#" style="text-decoration:none;">
+                        <div class="headline">
+                          <img src="https://picsum.photos/300/100/?random=1">
+                          <div class="Tag">買1送1</div>
+                        </div>
+                        <div class="foodText">
+                          <div class="shopNameandPoint">
+                            <div id="spName" class="shopName">Burger King漢堡王 松山店</div>
+                            <div id="pp" class="point">4.7</div>
+                          </div>
+                          <div class="TWD">
+                            <span id="ntd" class="">55TWD 費用</span>
+                            <div class="dotSpace"><span class="dot"> • </span></div>
+                            <span id="min" class="">25–35 分鐘</span>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="touchZone" style="cursor:pointer;">
+                      <div class="favorite">
+                        <div class="switch" id="sw" onclick="clickChangeC()">
+                          <!-- 空心 -->
+                          <i class="far fa-heart hEmpty" style="display: block;"></i>
+                          <!-- 實心 -->
+                          <i class="fas fa-heart hSolid" style="display: none;"></i>
+                          <i class="fas fa-heart hSolid4hover"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+
+
+
+
+            <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous
+              uk-slider-item="previous"></a>
+            <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next
+              uk-slider-item="next"></a>
+
+          </div>
+
+        </div>
         <!-- 搜尋頁面(套LEO) -->
 
         <!-- 顯示更多餐聽 -->
@@ -1268,32 +1497,16 @@
       </div>
 
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   </main>
 
 
   <!-- footer合併JESSY -->
-  <footer>footer</footer>
+  <footer>
+    footer
+  </footer>
+
+  <!-- Swiper JS -->
+  <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
