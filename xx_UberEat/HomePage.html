@@ -22,6 +22,13 @@
 
   <style>
     /* 套LEO */
+    * {
+      max-width: 100%;
+    }
+
+    img {
+      width: 100%;
+    }
 
     .container {
       display: block;
@@ -56,7 +63,6 @@
     }
 
     .touchZone {
-      position: absolute;
       top: 0;
       right: 0;
     }
@@ -143,6 +149,12 @@
 
     .col {
       margin-bottom: 30px;
+      padding-right: 0 ;
+      padding-left: 0 ;
+    }
+
+    #wrap{
+      margin: auto;
     }
 
     .TWD {
@@ -153,6 +165,7 @@
     .dotSpace {
       margin: 0 10px 0 10px;
     }
+
 
     /* 套JESSY */
     header {
@@ -206,27 +219,55 @@
 
     /* 活動店家(幻燈片) */
     .eventstore {
-      padding: 20px;
+      padding: 2%;
     }
 
     .eventstore img {
       border-radius: 15px;
+
       height: 100%;
+    }
+
+    .eventstore li {
+      padding-left: 45px;
     }
 
     .eventstore .uk-panel {
       height: 100%;
     }
 
+    /* 商店類別 */
+    .storecategory {
+      padding: 2%;
+    }
+
+
+
+    .storecategory .uk-panel {
+      height: 100%;
+    }
+
+    /* 店家卡片(幻燈片) */
+    .storecard {
+      padding: 2%;
+    }
+
+    .storecard img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .storecard li {
+      padding-left: 32px;
+    }
+
     /* 副分類 */
     #subcategory {
-      min-width: 400px;
+      min-width: 300px;
       height: 700px;
     }
 
-    #cellphone-subcategory {
-      
-    }
+    #cellphone-subcategory {}
 
     /* 副分類選單(關) */
     .uk-accordion-title::before {
@@ -242,7 +283,7 @@
     }
 
     .form-check {
-      width: 280px;
+      width: 220px;
       height: 22px;
     }
 
@@ -268,6 +309,8 @@
 
     }
 
+
+
     .uk-accordion-content button {
       background-color: #eee;
     }
@@ -283,46 +326,57 @@
 
 
 
-    /* 商店類別 */
-    .storecategory {
-      padding: 20px;
 
-    }
-
-    .storecategory img {
-      width: 100%;
-    }
-
-    .storecategory .uk-panel {
-      height: 100%;
-    }
 
     #invitefriend {
       font-size: 28px;
-      height: 200px;
+      margin: 20px;
     }
 
-    /* :root {
-      --uk-breakpoint-s: 992px;
-      --uk-breakpoint-m: 992px;
-      --uk-breakpoint-l: 992px;
-      --uk-breakpoint-xl: 992px;
-    } */
-
+    #invitefriend img {
+      padding-right: 10px;
+    }
 
 
     @media screen and (max-width:992px) {
+      main {
+        padding: 0px 12px;
+      }
+
       #subcategory {
         display: none;
       }
 
+      #invitefriend p {
+        text-align: start;
+        font-size: 22px;
+      }
+
+      #btn-wrap {
+        display: flex;
+
+      }
     }
 
     @media screen and (min-width:992px) {
+      .uk-grid {
+        margin-left: -5px;
+
+      }
+
+      #btn-wrap {
+
+        justify-content: center;
+
+      }
+
       #cellphone-subcategory {
         display: none;
       }
-
+      .col {
+  
+      padding-left:32px ;
+    }
     }
   </style>
 </head>
@@ -650,8 +704,8 @@
       <div class="uk-position-relative uk-visible-toggle uk-light " tabindex="-1" uk-slider="center: true">
 
         <ul class="uk-slider-items uk-grid ">
-          <li class="uk-width-1-3@l uk-width-1-1">
-            <div class="uk-panel">
+          <li class="uk-width-1-3@l uk-width-1-1 ">
+            <div class="uk-panel ">
               <img src="https://d1g1f25tn8m2e6.cloudfront.net/95553966-6d59-47a8-a879-1ce72b2012be.jpg" alt="">
 
             </div>
@@ -854,254 +908,644 @@
 
       </div>
       <!-- 商品類別 -->
-      <div id="shopcategory">
+      <div id="shopcategory" class="">
         <!-- 店家欄(分類) -->
         <div class="storecategory">
           <div class="d-flex align-items-center justify-content-between">
             <h2>您的最愛商家</h2><a href="">查看全部</a>
           </div>
-          <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="center: true">
-        
-            <ul class="uk-slider-items uk-grid uk-child-width-3-">
-              <li class="uk-width-1-3@l uk-width-1-1">
-                <div class="uk-panel">
-                  <!-- 商店卡(LEO) -->
-                  <div class="col">
-                    <div class="foodCard" style="cursor:pointer;">
-                      <a href="#" style="text-decoration:none;">
-                        <div class="headline">
-                          <img src="https://picsum.photos/300/100/?random=1">
-                          <div class="Tag">買1送1</div>
+          <div class="uk-panel">
+            <!-- 店家卡片(幻燈片) -->
+            <div class="storecard">
+              <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="center: true">
+
+                <ul class="uk-slider-items uk-grid ">
+                  <li class=" uk-width-1-3@l uk-width-1-1">
+                    <div class="uk-panel">
+                      <!-- 商店卡(LEO) -->
+                      <div>
+                        <div class="foodCard" style="cursor:pointer;">
+                          <a href="#" style="text-decoration:none;">
+                            <div class="headline">
+                              <img src="https://picsum.photos/300/100/?random=1">
+                              <div class="Tag">買1送1</div>
+                            </div>
+                            <div class="foodText">
+                              <div class="shopNameandPoint">
+                                <div id="spName" class="shopName">Burger King漢堡王 松山店</div>
+                                <div id="pp" class="point">4.7</div>
+                              </div>
+                              <div class="TWD">
+                                <span id="ntd" class="">55TWD 費用</span>
+                                <div class="dotSpace"><span class="dot"> • </span></div>
+                                <span id="min" class="">25–35 分鐘</span>
+                              </div>
+                            </div>
+                          </a>
                         </div>
-                        <div class="foodText">
-                          <div class="shopNameandPoint">
-                            <div id="spName" class="shopName">Burger King漢堡王 松山店</div>
-                            <div id="pp" class="point">4.7</div>
+                        <div class="touchZone" style="cursor:pointer;">
+                          <div class="favorite">
+                            <div class="switch" id="sw" onclick="clickChangeC()">
+                              <!-- 空心 -->
+                              <i class="far fa-heart hEmpty" style="display: block;"></i>
+                              <!-- 實心 -->
+                              <i class="fas fa-heart hSolid" style="display: none;"></i>
+                              <i class="fas fa-heart hSolid4hover"></i>
+                            </div>
                           </div>
-                          <div class="TWD">
-                            <span id="ntd" class="">55TWD 費用</span>
-                            <div class="dotSpace"><span class="dot"> • </span></div>
-                            <span id="min" class="">25–35 分鐘</span>
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-                    <div class="touchZone" style="cursor:pointer;">
-                      <div class="favorite">
-                        <div class="switch" id="sw" onclick="clickChangeC()">
-                          <!-- 空心 -->
-                          <i class="far fa-heart hEmpty" style="display: block;"></i>
-                          <!-- 實心 -->
-                          <i class="fas fa-heart hSolid" style="display: none;"></i>
-                          <i class="fas fa-heart hSolid4hover"></i>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-              </li>
-              <li class="uk-width-1-3@l uk-width-1-1">
-                <div class="uk-panel">
-                  <!-- 商店卡(LEO) -->
-                  <div class="col">
-                    <div class="foodCard" style="cursor:pointer;">
-                      <a href="#" style="text-decoration:none;">
-                        <div class="headline">
-                          <img src="https://picsum.photos/300/100/?random=1">
-                          <div class="Tag">買1送1</div>
+                  </li>
+
+                  <li class=" uk-width-1-3@l uk-width-1-1 ">
+                    <div class="uk-panel">
+                      <!-- 商店卡(LEO) -->
+                      <div>
+                        <div class="foodCard" style="cursor:pointer;">
+                          <a href="#" style="text-decoration:none;">
+                            <div class="headline">
+                              <img src="https://picsum.photos/300/100/?random=1">
+                              <div class="Tag">買1送1</div>
+                            </div>
+                            <div class="foodText">
+                              <div class="shopNameandPoint">
+                                <div id="spName" class="shopName">Burger King漢堡王 松山店</div>
+                                <div id="pp" class="point">4.7</div>
+                              </div>
+                              <div class="TWD">
+                                <span id="ntd" class="">55TWD 費用</span>
+                                <div class="dotSpace"><span class="dot"> • </span></div>
+                                <span id="min" class="">25–35 分鐘</span>
+                              </div>
+                            </div>
+                          </a>
                         </div>
-                        <div class="foodText">
-                          <div class="shopNameandPoint">
-                            <div id="spName" class="shopName">Burger King漢堡王 松山店</div>
-                            <div id="pp" class="point">4.7</div>
+                        <div class="touchZone" style="cursor:pointer;">
+                          <div class="favorite">
+                            <div class="switch" id="sw" onclick="clickChangeC()">
+                              <!-- 空心 -->
+                              <i class="far fa-heart hEmpty" style="display: block;"></i>
+                              <!-- 實心 -->
+                              <i class="fas fa-heart hSolid" style="display: none;"></i>
+                              <i class="fas fa-heart hSolid4hover"></i>
+                            </div>
                           </div>
-                          <div class="TWD">
-                            <span id="ntd" class="">55TWD 費用</span>
-                            <div class="dotSpace"><span class="dot"> • </span></div>
-                            <span id="min" class="">25–35 分鐘</span>
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-                    <div class="touchZone" style="cursor:pointer;">
-                      <div class="favorite">
-                        <div class="switch" id="sw" onclick="clickChangeC()">
-                          <!-- 空心 -->
-                          <i class="far fa-heart hEmpty" style="display: block;"></i>
-                          <!-- 實心 -->
-                          <i class="fas fa-heart hSolid" style="display: none;"></i>
-                          <i class="fas fa-heart hSolid4hover"></i>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-              </li>
-              <li class="uk-width-1-3@l uk-width-1-1">
-                <div class="uk-panel">
-                  <!-- 商店卡(LEO) -->
-                  <div class="col">
-                    <div class="foodCard" style="cursor:pointer;">
-                      <a href="#" style="text-decoration:none;">
-                        <div class="headline">
-                          <img src="https://picsum.photos/300/100/?random=1">
-                          <div class="Tag">買1送1</div>
+                  </li>
+
+                  <li class=" uk-width-1-3@l uk-width-1-1 ">
+                    <div class="uk-panel">
+                      <!-- 商店卡(LEO) -->
+                      <div>
+                        <div class="foodCard" style="cursor:pointer;">
+                          <a href="#" style="text-decoration:none;">
+                            <div class="headline">
+                              <img src="https://picsum.photos/300/100/?random=1">
+                              <div class="Tag">買1送1</div>
+                            </div>
+                            <div class="foodText">
+                              <div class="shopNameandPoint">
+                                <div id="spName" class="shopName">Burger King漢堡王 松山店</div>
+                                <div id="pp" class="point">4.7</div>
+                              </div>
+                              <div class="TWD">
+                                <span id="ntd" class="">55TWD 費用</span>
+                                <div class="dotSpace"><span class="dot"> • </span></div>
+                                <span id="min" class="">25–35 分鐘</span>
+                              </div>
+                            </div>
+                          </a>
                         </div>
-                        <div class="foodText">
-                          <div class="shopNameandPoint">
-                            <div id="spName" class="shopName">Burger King漢堡王 松山店</div>
-                            <div id="pp" class="point">4.7</div>
+                        <div class="touchZone" style="cursor:pointer;">
+                          <div class="favorite">
+                            <div class="switch" id="sw" onclick="clickChangeC()">
+                              <!-- 空心 -->
+                              <i class="far fa-heart hEmpty" style="display: block;"></i>
+                              <!-- 實心 -->
+                              <i class="fas fa-heart hSolid" style="display: none;"></i>
+                              <i class="fas fa-heart hSolid4hover"></i>
+                            </div>
                           </div>
-                          <div class="TWD">
-                            <span id="ntd" class="">55TWD 費用</span>
-                            <div class="dotSpace"><span class="dot"> • </span></div>
-                            <span id="min" class="">25–35 分鐘</span>
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-                    <div class="touchZone" style="cursor:pointer;">
-                      <div class="favorite">
-                        <div class="switch" id="sw" onclick="clickChangeC()">
-                          <!-- 空心 -->
-                          <i class="far fa-heart hEmpty" style="display: block;"></i>
-                          <!-- 實心 -->
-                          <i class="fas fa-heart hSolid" style="display: none;"></i>
-                          <i class="fas fa-heart hSolid4hover"></i>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-              </li>
-              <li class="uk-width-1-3@l uk-width-1-1">
-                <div class="uk-panel">
-                  <!-- 商店卡(LEO) -->
-                  <div class="col">
-                    <div class="foodCard" style="cursor:pointer;">
-                      <a href="#" style="text-decoration:none;">
-                        <div class="headline">
-                          <img src="https://picsum.photos/300/100/?random=1">
-                          <div class="Tag">買1送1</div>
+                  </li>
+
+                  <li class=" uk-width-1-3@l uk-width-1-1 ">
+                    <div class="uk-panel">
+                      <!-- 商店卡(LEO) -->
+                      <div>
+                        <div class="foodCard" style="cursor:pointer;">
+                          <a href="#" style="text-decoration:none;">
+                            <div class="headline">
+                              <img src="https://picsum.photos/300/100/?random=1">
+                              <div class="Tag">買1送1</div>
+                            </div>
+                            <div class="foodText">
+                              <div class="shopNameandPoint">
+                                <div id="spName" class="shopName">Burger King漢堡王 松山店</div>
+                                <div id="pp" class="point">4.7</div>
+                              </div>
+                              <div class="TWD">
+                                <span id="ntd" class="">55TWD 費用</span>
+                                <div class="dotSpace"><span class="dot"> • </span></div>
+                                <span id="min" class="">25–35 分鐘</span>
+                              </div>
+                            </div>
+                          </a>
                         </div>
-                        <div class="foodText">
-                          <div class="shopNameandPoint">
-                            <div id="spName" class="shopName">Burger King漢堡王 松山店</div>
-                            <div id="pp" class="point">4.7</div>
+                        <div class="touchZone" style="cursor:pointer;">
+                          <div class="favorite">
+                            <div class="switch" id="sw" onclick="clickChangeC()">
+                              <!-- 空心 -->
+                              <i class="far fa-heart hEmpty" style="display: block;"></i>
+                              <!-- 實心 -->
+                              <i class="fas fa-heart hSolid" style="display: none;"></i>
+                              <i class="fas fa-heart hSolid4hover"></i>
+                            </div>
                           </div>
-                          <div class="TWD">
-                            <span id="ntd" class="">55TWD 費用</span>
-                            <div class="dotSpace"><span class="dot"> • </span></div>
-                            <span id="min" class="">25–35 分鐘</span>
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-                    <div class="touchZone" style="cursor:pointer;">
-                      <div class="favorite">
-                        <div class="switch" id="sw" onclick="clickChangeC()">
-                          <!-- 空心 -->
-                          <i class="far fa-heart hEmpty" style="display: block;"></i>
-                          <!-- 實心 -->
-                          <i class="fas fa-heart hSolid" style="display: none;"></i>
-                          <i class="fas fa-heart hSolid4hover"></i>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-              </li>
-              <li class="uk-width-1-3@l uk-width-1-1">
-                <div class="uk-panel">
-                  <!-- 商店卡(LEO) -->
-                  <div class="col">
-                    <div class="foodCard" style="cursor:pointer;">
-                      <a href="#" style="text-decoration:none;">
-                        <div class="headline">
-                          <img src="https://picsum.photos/300/100/?random=1">
-                          <div class="Tag">買1送1</div>
+                  </li>
+
+                  <li class=" uk-width-1-3@l uk-width-1-1 ">
+                    <div class="uk-panel">
+                      <!-- 商店卡(LEO) -->
+                      <div>
+                        <div class="foodCard" style="cursor:pointer;">
+                          <a href="#" style="text-decoration:none;">
+                            <div class="headline">
+                              <img src="https://picsum.photos/300/100/?random=1">
+                              <div class="Tag">買1送1</div>
+                            </div>
+                            <div class="foodText">
+                              <div class="shopNameandPoint">
+                                <div id="spName" class="shopName">Burger King漢堡王 松山店</div>
+                                <div id="pp" class="point">4.7</div>
+                              </div>
+                              <div class="TWD">
+                                <span id="ntd" class="">55TWD 費用</span>
+                                <div class="dotSpace"><span class="dot"> • </span></div>
+                                <span id="min" class="">25–35 分鐘</span>
+                              </div>
+                            </div>
+                          </a>
                         </div>
-                        <div class="foodText">
-                          <div class="shopNameandPoint">
-                            <div id="spName" class="shopName">Burger King漢堡王 松山店</div>
-                            <div id="pp" class="point">4.7</div>
+                        <div class="touchZone" style="cursor:pointer;">
+                          <div class="favorite">
+                            <div class="switch" id="sw" onclick="clickChangeC()">
+                              <!-- 空心 -->
+                              <i class="far fa-heart hEmpty" style="display: block;"></i>
+                              <!-- 實心 -->
+                              <i class="fas fa-heart hSolid" style="display: none;"></i>
+                              <i class="fas fa-heart hSolid4hover"></i>
+                            </div>
                           </div>
-                          <div class="TWD">
-                            <span id="ntd" class="">55TWD 費用</span>
-                            <div class="dotSpace"><span class="dot"> • </span></div>
-                            <span id="min" class="">25–35 分鐘</span>
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-                    <div class="touchZone" style="cursor:pointer;">
-                      <div class="favorite">
-                        <div class="switch" id="sw" onclick="clickChangeC()">
-                          <!-- 空心 -->
-                          <i class="far fa-heart hEmpty" style="display: block;"></i>
-                          <!-- 實心 -->
-                          <i class="fas fa-heart hSolid" style="display: none;"></i>
-                          <i class="fas fa-heart hSolid4hover"></i>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-              </li>
-            </ul>
-        
-        
-        
-        
-            <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous
-              uk-slider-item="previous"></a>
-            <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next
-              uk-slider-item="next"></a>
-        
-          </div>
-        
-        </div>
+                  </li>
+                </ul>
 
 
-        <!-- 邀請好友 -->
 
-        <div id="invitefriend">
 
-          <div class="d-flex bd-highlight">
-            <div class="bd-highlight"> <img
-                src="https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/c51b2a12396d63d49b5272de6efa283d.svg">
-            </div>
+                <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous
+                  uk-slider-item="previous"></a>
+                <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next
+                  uk-slider-item="next"></a>
 
-            <div class="flex-fill bd-highlight text-center">
-              <p>只要您的好友嘗試使用 Uber Eats，您就能享有 $100 折扣優惠</p>
-              <div class="d-flex justify-content-center" style="margin: 40px;">
-                <button type="button" class="btn btn-dark rounded-pill"
-                  style="width: 120px;height: 40px;font-size: 18px;">邀請好友 <i class="fas fa-arrow-right "></i></button>
               </div>
             </div>
 
+
+          </div>
+
+
+          <!-- 邀請好友 -->
+
+          <div id="invitefriend">
+
+            <div class="d-flex bd-highlight align-items-center">
+
+              <div class="bd-highlight ">
+                <img src="https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/c51b2a12396d63d49b5272de6efa283d.svg">
+              </div>
+
+              <div class=" flex-fill bd-highlight text-center ">
+                <p>只要您的好友嘗試使用 Uber Eats，您就能享有 $100 折扣優惠</p>
+                <div id="btn-wrap" class="d-flex " style="">
+                  <button type="button" class="btn btn-dark rounded-pill"
+                    style="width: 120px;height: 40px;font-size: 18px;">邀請好友<i class="fas fa-arrow-right "></i>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- 店家卡片(幻燈片) -->
+          <div class="storecard">
+            <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="center: true">
+
+              <ul class="uk-slider-items uk-grid ">
+                <li class=" uk-width-1-3@l uk-width-1-1">
+                  <div class="uk-panel">
+                    <!-- 商店卡(LEO) -->
+                    <div>
+                      <div class="foodCard" style="cursor:pointer;">
+                        <a href="#" style="text-decoration:none;">
+                          <div class="headline">
+                            <img src="https://picsum.photos/300/100/?random=1">
+                            <div class="Tag">買1送1</div>
+                          </div>
+                          <div class="foodText">
+                            <div class="shopNameandPoint">
+                              <div id="spName" class="shopName">Burger King漢堡王 松山店</div>
+                              <div id="pp" class="point">4.7</div>
+                            </div>
+                            <div class="TWD">
+                              <span id="ntd" class="">55TWD 費用</span>
+                              <div class="dotSpace"><span class="dot"> • </span></div>
+                              <span id="min" class="">25–35 分鐘</span>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="touchZone" style="cursor:pointer;">
+                        <div class="favorite">
+                          <div class="switch" id="sw" onclick="clickChangeC()">
+                            <!-- 空心 -->
+                            <i class="far fa-heart hEmpty" style="display: block;"></i>
+                            <!-- 實心 -->
+                            <i class="fas fa-heart hSolid" style="display: none;"></i>
+                            <i class="fas fa-heart hSolid4hover"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li class=" uk-width-1-3@l uk-width-1-1 ">
+                  <div class="uk-panel">
+                    <!-- 商店卡(LEO) -->
+                    <div>
+                      <div class="foodCard" style="cursor:pointer;">
+                        <a href="#" style="text-decoration:none;">
+                          <div class="headline">
+                            <img src="https://picsum.photos/300/100/?random=1">
+                            <div class="Tag">買1送1</div>
+                          </div>
+                          <div class="foodText">
+                            <div class="shopNameandPoint">
+                              <div id="spName" class="shopName">Burger King漢堡王 松山店</div>
+                              <div id="pp" class="point">4.7</div>
+                            </div>
+                            <div class="TWD">
+                              <span id="ntd" class="">55TWD 費用</span>
+                              <div class="dotSpace"><span class="dot"> • </span></div>
+                              <span id="min" class="">25–35 分鐘</span>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="touchZone" style="cursor:pointer;">
+                        <div class="favorite">
+                          <div class="switch" id="sw" onclick="clickChangeC()">
+                            <!-- 空心 -->
+                            <i class="far fa-heart hEmpty" style="display: block;"></i>
+                            <!-- 實心 -->
+                            <i class="fas fa-heart hSolid" style="display: none;"></i>
+                            <i class="fas fa-heart hSolid4hover"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li class=" uk-width-1-3@l uk-width-1-1 ">
+                  <div class="uk-panel">
+                    <!-- 商店卡(LEO) -->
+                    <div>
+                      <div class="foodCard" style="cursor:pointer;">
+                        <a href="#" style="text-decoration:none;">
+                          <div class="headline">
+                            <img src="https://picsum.photos/300/100/?random=1">
+                            <div class="Tag">買1送1</div>
+                          </div>
+                          <div class="foodText">
+                            <div class="shopNameandPoint">
+                              <div id="spName" class="shopName">Burger King漢堡王 松山店</div>
+                              <div id="pp" class="point">4.7</div>
+                            </div>
+                            <div class="TWD">
+                              <span id="ntd" class="">55TWD 費用</span>
+                              <div class="dotSpace"><span class="dot"> • </span></div>
+                              <span id="min" class="">25–35 分鐘</span>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="touchZone" style="cursor:pointer;">
+                        <div class="favorite">
+                          <div class="switch" id="sw" onclick="clickChangeC()">
+                            <!-- 空心 -->
+                            <i class="far fa-heart hEmpty" style="display: block;"></i>
+                            <!-- 實心 -->
+                            <i class="fas fa-heart hSolid" style="display: none;"></i>
+                            <i class="fas fa-heart hSolid4hover"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li class=" uk-width-1-3@l uk-width-1-1 ">
+                  <div class="uk-panel">
+                    <!-- 商店卡(LEO) -->
+                    <div>
+                      <div class="foodCard" style="cursor:pointer;">
+                        <a href="#" style="text-decoration:none;">
+                          <div class="headline">
+                            <img src="https://picsum.photos/300/100/?random=1">
+                            <div class="Tag">買1送1</div>
+                          </div>
+                          <div class="foodText">
+                            <div class="shopNameandPoint">
+                              <div id="spName" class="shopName">Burger King漢堡王 松山店</div>
+                              <div id="pp" class="point">4.7</div>
+                            </div>
+                            <div class="TWD">
+                              <span id="ntd" class="">55TWD 費用</span>
+                              <div class="dotSpace"><span class="dot"> • </span></div>
+                              <span id="min" class="">25–35 分鐘</span>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="touchZone" style="cursor:pointer;">
+                        <div class="favorite">
+                          <div class="switch" id="sw" onclick="clickChangeC()">
+                            <!-- 空心 -->
+                            <i class="far fa-heart hEmpty" style="display: block;"></i>
+                            <!-- 實心 -->
+                            <i class="fas fa-heart hSolid" style="display: none;"></i>
+                            <i class="fas fa-heart hSolid4hover"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li class=" uk-width-1-3@l uk-width-1-1 ">
+                  <div class="uk-panel">
+                    <!-- 商店卡(LEO) -->
+                    <div>
+                      <div class="foodCard" style="cursor:pointer;">
+                        <a href="#" style="text-decoration:none;">
+                          <div class="headline">
+                            <img src="https://picsum.photos/300/100/?random=1">
+                            <div class="Tag">買1送1</div>
+                          </div>
+                          <div class="foodText">
+                            <div class="shopNameandPoint">
+                              <div id="spName" class="shopName">Burger King漢堡王 松山店</div>
+                              <div id="pp" class="point">4.7</div>
+                            </div>
+                            <div class="TWD">
+                              <span id="ntd" class="">55TWD 費用</span>
+                              <div class="dotSpace"><span class="dot"> • </span></div>
+                              <span id="min" class="">25–35 分鐘</span>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="touchZone" style="cursor:pointer;">
+                        <div class="favorite">
+                          <div class="switch" id="sw" onclick="clickChangeC()">
+                            <!-- 空心 -->
+                            <i class="far fa-heart hEmpty" style="display: block;"></i>
+                            <!-- 實心 -->
+                            <i class="fas fa-heart hSolid" style="display: none;"></i>
+                            <i class="fas fa-heart hSolid4hover"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+
+
+
+
+              <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous
+                uk-slider-item="previous"></a>
+              <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next
+                uk-slider-item="next"></a>
+
+            </div>
+          </div>
+
+
+
+          <!-- 顯示更多餐聽 -->
+          <div class="d-flex justify-content-center" style="margin: 40px;">
+            <button type="button" class="btn btn-dark" style="width: 150px;height: 60px;font-size: 18px;">顯示更多餐廳
+            </button>
+          </div>
+
+          <!-- 搜尋頁面(套LEO) -->
+          <div class="container">
+            <div id="wrap" class="row row-cols-1  row-cols-lg-3 ">
+              <div class="col">
+                <div class="foodCard" style="cursor:pointer;">
+                  <a href="#" style="text-decoration:none;">
+                    <div class="headline">
+                      <img src="https://picsum.photos/300/100/?random=1">
+                      <div class="Tag">買1送1</div>
+                    </div>
+                    <div class="foodText">
+                      <div class="shopNameandPoint">
+                        <div id="spName" class="shopName">Burger King漢堡王 松山店</div>
+                        <div id="pp" class="point">4.7</div>
+                      </div>
+                      <div class="TWD">
+                        <span id="ntd" class="">55TWD 費用</span>
+                        <div class="dotSpace"><span class="dot"> • </span></div>
+                        <span id="min" class="">25–35 分鐘</span>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div class="touchZone" style="cursor:pointer;">
+                  <div class="favorite">
+                    <div class="switch" id="sw" onclick="clickChangeC()">
+                      <!-- 空心 -->
+                      <i class="far fa-heart hEmpty"></i>
+                      <!-- 實心 -->
+                      <i class="fas fa-heart hSolid"></i>
+                      <i class="fas fa-heart hSolid4hover"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="foodCard" style="cursor:pointer;">
+                  <a href="#" style="text-decoration:none;">
+                    <div class="headline">
+                      <img src="https://picsum.photos/300/100/?random=2">
+                      <div class="Tag">買1送1</div>
+                    </div>
+                    <div class="foodText">
+                      <div class="shopNameandPoint">
+                        <div id="spName" class="shopName">Burger King漢堡王 松山店</div>
+                        <div id="pp" class="point">4.7</div>
+                      </div>
+                      <div class="TWD">
+                        <span id="ntd" class="">55TWD 費用</span>
+                        <div class="dotSpace"><span class="dot"> • </span></div>
+                        <span id="min" class="">25–35 分鐘</span>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div class="touchZone" style="cursor:pointer;">
+                  <div class="favorite">
+                    <div class="switch" id="sw" onclick="clickChangeC()">
+                      <!-- 空心 -->
+                      <i class="far fa-heart hEmpty"></i>
+                      <!-- 實心 -->
+                      <i class="fas fa-heart hSolid"></i>
+                      <i class="fas fa-heart hSolid4hover"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="foodCard" style="cursor:pointer;">
+                  <a href="#" style="text-decoration:none;">
+                    <div class="headline">
+                      <img src="https://picsum.photos/300/100/?random=3">
+                      <div class="Tag">買1送1</div>
+                    </div>
+                    <div class="foodText">
+                      <div class="shopNameandPoint">
+                        <div id="spName" class="shopName">Burger King漢堡王 松山店</div>
+                        <div id="pp" class="point">4.7</div>
+                      </div>
+                      <div class="TWD">
+                        <span id="ntd" class="">55TWD 費用</span>
+                        <div class="dotSpace"><span class="dot"> • </span></div>
+                        <span id="min" class="">25–35 分鐘</span>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div class="touchZone" style="cursor:pointer;">
+                  <div class="favorite">
+                    <div class="switch" id="sw" onclick="clickChangeC()">
+                      <!-- 空心 -->
+                      <i class="far fa-heart hEmpty"></i>
+                      <!-- 實心 -->
+                      <i class="fas fa-heart hSolid"></i>
+                      <i class="fas fa-heart hSolid4hover"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="foodCard" style="cursor:pointer;">
+                  <a href="#" style="text-decoration:none;">
+                    <div class="headline">
+                      <img src="https://picsum.photos/300/100/?random=4">
+                      <div class="Tag">買1送1</div>
+                    </div>
+                    <div class="foodText">
+                      <div class="shopNameandPoint">
+                        <div id="spName" class="shopName">Burger King漢堡王 松山店</div>
+                        <div id="pp" class="point">4.7</div>
+                      </div>
+                      <div class="TWD">
+                        <span id="ntd" class="">55TWD 費用</span>
+                        <div class="dotSpace"><span class="dot"> • </span></div>
+                        <span id="min" class="">25–35 分鐘</span>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div class="touchZone" style="cursor:pointer;">
+                  <div class="favorite">
+                    <div class="switch" id="sw" onclick="clickChangeC()">
+                      <!-- 空心 -->
+                      <i class="far fa-heart hEmpty"></i>
+                      <!-- 實心 -->
+                      <i class="fas fa-heart hSolid"></i>
+                      <i class="fas fa-heart hSolid4hover"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+
+            </div>
           </div>
 
         </div>
 
 
 
-        <!-- 搜尋頁面(套LEO) -->
 
-        <!-- 顯示更多餐聽 -->
-        <div class="d-flex justify-content-center" style="margin: 40px;">
-          <button type="button" class="btn btn-dark" style="width: 150px;height: 60px;font-size: 18px;">顯示更多餐廳</button>
-        </div>
+
       </div>
 
-    </div>
+
+
   </main>
 
+  <!-- 套用LEO搜尋 -->
 
   <!-- footer合併JESSY -->
   <footer>
     footer
   </footer>
+
+
+  <Script>
+    function clickChangeC() {
+
+      let solid = event.path[1].childNodes[7];
+      let empty = event.path[1].childNodes[3];
+
+
+      if (solid.style.display == "block") {
+        solid.style.display = "none"
+        empty.style.display = "block"
+        console.log("C");
+      }
+      else {
+        solid.style.display = "block"
+        empty.style.display = "none"
+        console.log("D");
+      }
+    };
+
+
+  </Script>
 
   <!-- Swiper JS -->
   <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
